@@ -1,9 +1,10 @@
-package com.app.ecom;
+package com.app.ecom.service;
 
+import com.app.ecom.repository.UserRepository;
+import com.app.ecom.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,8 @@ public class UserService {
                 .map(existingUser -> {
                     existingUser.setFirstName(updatedUser.getFirstName());
                     existingUser.setLastName(updatedUser.getLastName());
+                    existingUser.setEmail(updatedUser.getEmail());
+                    existingUser.setPhone(updatedUser.getPhone());
                     userRepository.save(existingUser);
                     return true;
                 }).orElse(false);
